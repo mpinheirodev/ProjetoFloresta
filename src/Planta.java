@@ -1,11 +1,17 @@
-public class Planta {
-    int cicloVida;
-    String nome;
-    int posicaoX, posicaoY;
+import java.util.Random;
 
-    public Planta(String nome, int cicloVida){
+public class Planta {
+    int cicloVida, vida, posicaoX, posicaoY;
+    String nome, icone;
+    Random aleatorio = new Random();
+
+    public Planta(String nome, int cicloVida, int vida, String icone){
         this.nome = nome;
         this.cicloVida = cicloVida;
+        this.vida = vida;
+        this.icone = icone;
+        this.posicaoX = aleatorio.nextInt(10);
+        this.posicaoY = aleatorio.nextInt(10);
     }
 
     void mostrar(){

@@ -2,27 +2,31 @@
 public class App {
     public static void main(String[] args) throws Exception {
 
+        Terreno terreno = new Terreno(10);
+
         // Criando um Coelho
-        Herbivoro coelho = new Herbivoro("coelho", true);
-        coelho.mostrar();
+        Herbivoro coelho = new Herbivoro("Coelho", true, 2, "🐇");
 
-        // // Criando um leão e um tigre
-        Animal leao = new Animal("Leão", false);
-        leao.mostrar();
+        // // // Criando um leão e um tigre
+        Carnivoro leao = new Carnivoro("Leão", false, 5, "🦁");
 
-        Animal tigre = new Animal("Tigre", false);
-        tigre.mostrar();
+        Carnivoro tigre = new Carnivoro("Tigre", false, 4, "🐯");
 
         // // Criando uma planta
-        Planta planta = new Planta("Arbusto", 5);
-        planta.mostrar();
-
+        Planta planta = new Planta("Arbusto", 5, 1, "🌱");
         // // Exibindo o terreno
-        Terreno terreno = new Terreno(10);
-        terreno.adicionarPlanta(planta);
         terreno.adicionarAnimal(coelho);
         terreno.adicionarAnimal(leao);
         terreno.adicionarAnimal(tigre);
-        terreno.exibirTerreno();
+
+        while (true) {
+            terreno.adicionarPlanta(planta);
+            terreno.exibirTerreno();
+            coelho.mover(terreno, coelho);
+            leao.mover(terreno, leao);
+            tigre.mover(terreno, tigre);
+            Thread.sleep(400);
+        }
+
     }
 }

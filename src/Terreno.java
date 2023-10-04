@@ -1,11 +1,11 @@
 public class Terreno {
     
-    private char[][] area;
+    private String [][] area;
     private int dimensao;
 
     public Terreno(int dimensao) {
         this.dimensao = dimensao;
-        area = new char[dimensao][dimensao];
+        area = new String [dimensao][dimensao];
         iniciarTerreno();
     }
 
@@ -18,7 +18,7 @@ public class Terreno {
     private void iniciarTerreno() {
         for (int i = 0; i < dimensao; i++) {
             for (int j = 0; j < dimensao; j++)
-                area[i][j] = ' ';
+                area[i][j] = "__";
         }
     }
 
@@ -28,18 +28,24 @@ public class Terreno {
         for (int i=0; i < dimensao; i++) {
             System.out.print("|");
             for (int j=0; j < dimensao; j++)
-                System.out.print(area[i][j] + " ");
+                System.out.print(area[i][j] + "__");
                 System.out.println(" |");
-            
         }
-        System.out.println();
+        System.out.println("");
     }
 
     public void adicionarAnimal(Animal animal) {
-        area[animal.posicaoX][animal.posicaoY] = animal.inicial.charAt(0);
+        area[animal.getposicaoX()][animal.getposicaoY()] = animal.icone;
     }
 
+    public void moverAnimal(Animal animal, int posX, int posY) {
+        area[posX][posY] = animal.icone;
+    }
     public void adicionarPlanta(Planta planta) {
-        area[planta.posicaoX][planta.posicaoY] = planta.nome.charAt(0);
+        area[planta.posicaoX][planta.posicaoY] = planta.icone;
+    }
+
+    public void retirarAnimal(Animal animal) {
+        area[animal.getposicaoX()][animal.getposicaoY()] = "__";
     }
 }
