@@ -1,4 +1,6 @@
-public class Carnivoro extends Animal{{
-    herbivoro = false;
-    cicloVida = 5;
-}}
+public class Carnivoro extends Animal{
+
+    public Carnivoro(String nome, boolean herbivoro) {
+        super(nome, herbivoro);
+    }
+}
