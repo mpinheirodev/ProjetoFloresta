@@ -3,30 +3,37 @@ import java.util.Random;
 public class Animal {
     int ciclosVida, posicaoX, posicaoY, vida;
     String nome, icone;
-    boolean herbivoro;
+    boolean carnivoro;
 
     Random aleatorio = new Random();
 
-    public Animal(String nome, boolean herbivoro, int vida, String icone) {
+    public Animal(String nome, boolean carnivoro, int vida, String icone) {
         this.nome = nome;
-        this.herbivoro = herbivoro;
+        this.carnivoro = carnivoro;
         this.ciclosVida = 0;
         this.vida = vida;
-        // this.inicial = nome.substring(0, 1);
         this.icone = icone;
         this.posicaoX = aleatorio.nextInt(10);
         this.posicaoY = aleatorio.nextInt(10);
     }
 
-    public void comer() {
-
+    public void comer(Animal predador, Animal presa, Terreno terreno) {
+        if (predador.carnivoro == true && presa.carnivoro == false) {
+            presa.vida--;
+            if (presa.vida == 0) {
+                terreno.exibirTerreno();
+                System.out.println(predador.nome + " comeu " + presa.nome);
+                System.out.println(presa.nome + " sobreviveu por " + presa.ciclosVida + " ciclos de vida");
+                terreno.retirarAnimal(presa);
+            }
+        }
     }
 
-    public int getposicaoX(){
+    public int getposicaoX() {
         return posicaoX;
     }
 
-    public int getposicaoY(){
+    public int getposicaoY() {
         return posicaoY;
     }
 
@@ -50,7 +57,6 @@ public class Animal {
         }
 
         if (posX >= 0 && posX < terreno.getDimensao() && posY >= 0 && posY < terreno.getDimensao()) {
-            // terreno[posicaoX][posicaoY] = ' ';
             terreno.retirarAnimal(animal);
             terreno.moverAnimal(animal, posX, posY);
             posicaoX = posX;

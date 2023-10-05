@@ -5,9 +5,9 @@ public class Planta {
     String nome, icone;
     Random aleatorio = new Random();
 
-    public Planta(String nome, int cicloVida, int vida, String icone){
+    public Planta(String nome, int vida, String icone){
         this.nome = nome;
-        this.cicloVida = cicloVida;
+        this.cicloVida = 0;
         this.vida = vida;
         this.icone = icone;
         this.posicaoX = aleatorio.nextInt(10);
