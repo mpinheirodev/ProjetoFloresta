@@ -1,8 +1,10 @@
+package Floresta.Plantas;
+
 import java.util.Random;
 
 public class Planta {
-    int cicloVida, vida, posicaoX, posicaoY;
-    String nome, icone;
+    public int cicloVida, vida, posicaoX, posicaoY;
+    public String nome, icone;
     Random aleatorio = new Random();
 
     public Planta(String nome, int vida, String icone){

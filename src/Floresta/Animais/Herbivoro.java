@@ -1,3 +1,5 @@
+package Floresta.Animais;
+
 public class Herbivoro extends Animal {
 
 

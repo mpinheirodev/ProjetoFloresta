@@ -1,9 +1,12 @@
-import java.util.Random;
+package Floresta.Animais;
 
-public class Animal {
-    int ciclosVida, posicaoX, posicaoY, vida;
-    String nome, icone;
-    boolean carnivoro;
+import java.util.Random;
+import Floresta.Terreno;
+
+public abstract class Animal {
+    protected int ciclosVida, posicaoX, posicaoY, vida;
+    protected String nome, icone;
+    protected boolean carnivoro;
 
     Random aleatorio = new Random();
 
@@ -17,24 +20,8 @@ public class Animal {
         this.posicaoY = aleatorio.nextInt(10);
     }
 
-    public void comer(Animal predador, Animal presa, Terreno terreno) {
-        if (predador.carnivoro == true && presa.carnivoro == false) {
-            presa.vida--;
-            if (presa.vida == 0) {
-                terreno.exibirTerreno();
-                System.out.println(predador.nome + " comeu " + presa.nome);
-                System.out.println(presa.nome + " sobreviveu por " + presa.ciclosVida + " ciclos de vida");
-                terreno.retirarAnimal(presa);
-            }
-        }
-    }
-
-    public int getposicaoX() {
-        return posicaoX;
-    }
-
-    public int getposicaoY() {
-        return posicaoY;
+    public boolean isCarnivoro() {
+        return false;
     }
 
     public void mover(Terreno terreno, Animal animal) {
@@ -65,9 +52,45 @@ public class Animal {
         }
     }
 
-    public void mostrar() {
-        System.out.println("Nome: " + this.nome);
-        System.out.println("Inicial: " + this.icone);
-        System.out.println("Posição: " + posicaoX + " " + posicaoY);
+    public void comer(Animal predador, Animal presa, Terreno terreno){};
+
+    public int getposicaoX() {
+        return posicaoX;
+    }
+
+    public void setPosicaoX(int posicaoX){
+        this.posicaoX = posicaoX;
+    }
+
+    public int getposicaoY() {
+        return posicaoY;
+    }
+
+    public void setPosicaoY(int posicaoY){
+        this.posicaoY = posicaoY;
+    }
+
+    public int getCiclosVida() {
+        return ciclosVida;
+    }
+
+    public void setCiclosVida(int ciclosVida) {
+        this.ciclosVida = ciclosVida;
+    }
+
+    public int getVida() {
+        return 0;
+    }
+
+    public void setVida(int vida) {
+        this.vida = vida;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getIcone() {
+        return icone;
     }
 }
